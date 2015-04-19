@@ -18,6 +18,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSLog(@"下载图片1-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queue, ^{
+        NSLog(@"下载图片2-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queue, ^{
+        NSLog(@"下载图片3-----%@", [NSThread currentThread]);
+    });
+    
+    NSLog(@"主线程-----%@", [NSThread mainThread]);
+
 }
 
 - (void)didReceiveMemoryWarning
